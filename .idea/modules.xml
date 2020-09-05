@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/br.com.roupas.DAO/br.com.roupas.DAO.iml" filepath="$PROJECT_DIR$/br.com.roupas.DAO/br.com.roupas.DAO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.roupas.business/br.com.roupas.business.iml" filepath="$PROJECT_DIR$/br.com.roupas.business/br.com.roupas.business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.roupas.comum/br.com.roupas.comum.iml" filepath="$PROJECT_DIR$/br.com.roupas.comum/br.com.roupas.comum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.roupas.console/br.com.roupas.console.iml" filepath="$PROJECT_DIR$/br.com.roupas.console/br.com.roupas.console.iml" />
       <module fileurl="file://$PROJECT_DIR$/desafio-crud.iml" filepath="$PROJECT_DIR$/desafio-crud.iml" />
     </modules>
   </component>
