@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/br.com.clothes.DAO/br.com.clothes.DAO.iml" filepath="$PROJECT_DIR$/br.com.clothes.DAO/br.com.clothes.DAO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.clothes.business/br.com.clothes.business.iml" filepath="$PROJECT_DIR$/br.com.clothes.business/br.com.clothes.business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.clothes.comum/br.com.clothes.comum.iml" filepath="$PROJECT_DIR$/br.com.clothes.comum/br.com.clothes.comum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/br.com.clothes.console/br.com.clothes.console.iml" filepath="$PROJECT_DIR$/br.com.clothes.console/br.com.clothes.console.iml" />
       <module fileurl="file://$PROJECT_DIR$/br.com.clothes.DAO/br.com.roupas.DAO.iml" filepath="$PROJECT_DIR$/br.com.clothes.DAO/br.com.roupas.DAO.iml" />
       <module fileurl="file://$PROJECT_DIR$/br.com.clothes.business/br.com.roupas.business.iml" filepath="$PROJECT_DIR$/br.com.clothes.business/br.com.roupas.business.iml" />
       <module fileurl="file://$PROJECT_DIR$/br.com.clothes.comum/br.com.roupas.comum.iml" filepath="$PROJECT_DIR$/br.com.clothes.comum/br.com.roupas.comum.iml" />
