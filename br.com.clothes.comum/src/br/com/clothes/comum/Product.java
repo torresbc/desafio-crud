@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Product {
     protected int code;
-    protected Date date = new Date();
+    protected Date date;
     protected String local;
     protected String type;
     protected String brand;
@@ -38,6 +38,14 @@ public class Product {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getLocal() {
