@@ -1,3 +1,5 @@
+package br.com.clothes.comum;
+
 import java.util.Date;
 
 public class Product {

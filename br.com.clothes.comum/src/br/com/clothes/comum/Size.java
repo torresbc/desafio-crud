@@ -1,3 +1,5 @@
+package br.com.clothes.comum;
+
 public enum Size {
     P(0), M(1), G(2), GG(3);
 
