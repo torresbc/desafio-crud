@@ -11,12 +11,19 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
+import java.util.concurrent.ExecutionException;
+import java.util.Date;
 
 public class RepositoryTxtDAO extends DAO {
-    static List<Product> products = new ArrayList<Product>();
+    public static List<Product> products = new ArrayList<Product>();
 
-    public RepositoryTxtDAO() throws Exception {
-        loadProducts();
+    public RepositoryTxtDAO() {
+        try{
+            loadProducts();
+        }
+        catch (Exception erro){
+
+        }
     }
 
     private void loadProducts() throws Exception {
@@ -24,35 +31,32 @@ public class RepositoryTxtDAO extends DAO {
 
         if (file.exists()) {
             List<String> linhas = new ArrayList<String>();
-            try {
-                linhas = Files.readAllLines(file.toPath(), Charset.defaultCharset());
-            } catch (IOException error) {
 
-            }
+            linhas = Files.readAllLines(file.toPath(), Charset.defaultCharset());
+
             for (String line :
                     linhas) {
                 ;
                 products.add(prodToProduct(line));
             }
         } else {
+
             file.createNewFile();
         }
     }
 
-    public Product read(int id) throws Exception {
+    public Product read(int id) {
         File file = new File("stock.txt");
-        FileOutputStream newLine = new FileOutputStream(file, true);
 
         try {
-            for (String line : Files.readAllLines(file.toPath(), Charset.defaultCharset())) {
+            FileOutputStream newLine = new FileOutputStream(file, true);
 
+            for (String line : Files.readAllLines(file.toPath(), Charset.defaultCharset())) {
                 if (Integer.toString(id) == line.split("\\|")[0]) {
                     return prodToProduct(line);
                 }
-
             }
         } catch (IOException error) {
-
         }
         return null;
     }
@@ -78,11 +82,13 @@ public class RepositoryTxtDAO extends DAO {
         }
     }
 
-    public void delete(int id) throws Exception {
+    public void delete(int id) {
         File file = new File("stock.txt");
-        FileOutputStream newLine = new FileOutputStream(file, true);
+
         String fileContents = "";
         try {
+            FileOutputStream newLine = new FileOutputStream(file, true);
+
             for (String line : Files.readAllLines(file.toPath(), Charset.defaultCharset())) {
 
                 if (!(Integer.toString(id) == line.split("\\|")[0])) {
@@ -112,12 +118,12 @@ public class RepositoryTxtDAO extends DAO {
     private String prodToString(Product p) {
         String prod = p.getCode() + "|" + p.getDate() + "|" + p.getLocal() + "|" + p.getType() + "|" + p.getBrand()
                 + "|" + p.getDescription() + "|" + p.getSize() + "|" + p.getColor() + "|" + p.getValueTag() + "|"
-                + p.getValuePaid() + "|" + p.getValueBase() + "|" + p.getPrice();
+                + p.getValuePaid() + "|" + p.getPrice();
         return prod;
     }
 
-    private Product prodToProduct(String p) throws Exception {
-        String[] res = p.split("//|");
+    private Product prodToProduct(String p) {
+        String[] res = p.split("\\|");
         Size size;
         Color color;
 
@@ -175,9 +181,16 @@ public class RepositoryTxtDAO extends DAO {
             default:
                 color = null;
         }
-        Product prod = new Product(Integer.parseInt(res[0]), (new SimpleDateFormat("dd/MM/yyyy").parse(res[1])),
+
+        Date dt = new Date();
+        try {
+            dt = (new SimpleDateFormat("dd/MM/yyyy").parse(res[1]));
+        }
+        catch (Exception erro){
+        }
+        Product prod = new Product(Integer.parseInt(res[0]), dt,
                 res[2], res[3], res[4], res[5], size, color, Float.parseFloat(res[8]),
-                Float.parseFloat(res[9]), Float.parseFloat(res[10]), Float.parseFloat(res[11]));
+                Float.parseFloat(res[9]), Float.parseFloat(res[10]));
         return prod;
     }
 }

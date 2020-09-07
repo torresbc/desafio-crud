@@ -13,11 +13,10 @@ public class Product {
     protected Color color;
     protected float valueTag;
     protected float valuePaid;
-    protected float valueBase;
     protected float price;
 
     public Product(int code, Date date, String local, String type, String brand, String description, Size size,
-                   Color color, float valueTag, float valuePaid, float valueBases, float price) {
+                   Color color, float valueTag, float valuePaid, float price) {
         this.code = code;
         this.date = date;
         this.local = local;
@@ -28,7 +27,6 @@ public class Product {
         this.color = color;
         this.valueTag = valueTag;
         this.valuePaid = valuePaid;
-        this.valueBase = valueBases;
         this.price = price;
     }
 
@@ -113,11 +111,7 @@ public class Product {
     }
 
     public float getValueBase() {
-        return valueBase;
-    }
-
-    public void setValueBase(float valueBase) {
-        this.valueBase = valueBase;
+        return valuePaid*2;
     }
 
     public float getPrice() {
