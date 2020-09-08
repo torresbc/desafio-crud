@@ -9,4 +9,47 @@ public enum Color {
     Color(int idColor) {
         this.idColor = idColor;
     }
+
+    public static Color CaseColor(int id){
+        Color color;
+        switch (id) {
+            case 0:
+                color = Color.BLUE;
+                break;
+            case 1:
+                color = Color.GREEN;
+                break;
+            case 2:
+                color = Color.YELLOW;
+                break;
+            case 3:
+                color = Color.RED;
+                break;
+            case 4:
+                color = Color.PINK;
+                break;
+            case 5:
+                color = Color.PURPLE;
+                break;
+            case 6:
+                color = Color.BLACK;
+                break;
+            case 7:
+                color = Color.WHITE;
+                break;
+            case 8:
+                color = Color.GRAY;
+                break;
+            case 9:
+                color = Color.ORANGE;
+                break;
+            case 10:
+                color = Color.BROWN;
+                break;
+            default:
+                color = null;
+        }
+        return color;
+    }
+
 }

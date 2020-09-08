@@ -8,4 +8,26 @@ public enum Size {
     Size(int idSize) {
         this.idSize = idSize;
     }
+
+    public static Size CaseSize(int id){
+        Size size;
+        switch (id) {
+            case 0:
+                size = Size.P;
+                break;
+            case 1:
+                size = Size.M;
+                break;
+            case 2:
+                size = Size.G;
+                break;
+            case 3:
+                size = Size.GG;
+                break;
+            default:
+                size = null;
+        }
+        return size;
+    }
+
 }
