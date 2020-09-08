@@ -30,4 +30,7 @@ public enum Size {
         return size;
     }
 
+    public int getSize() {
+        return idSize;
+    }
 }

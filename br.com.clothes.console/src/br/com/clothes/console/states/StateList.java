@@ -12,7 +12,7 @@ public class StateList extends StateConsole {
     public boolean execute(){
 
         if(RepositoryTxtDAO.products.size()!=0)
-            System.out.println("Aqui estão todos os produtos cadastrados:");
+            System.out.println("Aqui estão todos os produtos cadastrados:\n\n");
         else
             System.out.println("Não existem produtos cadastrados :/");
 

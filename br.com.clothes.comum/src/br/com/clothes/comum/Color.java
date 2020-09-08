@@ -52,4 +52,8 @@ public enum Color {
         return color;
     }
 
+    public int getColor() {
+        return idColor;
+    }
+
 }

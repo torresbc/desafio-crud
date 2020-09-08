@@ -53,7 +53,7 @@ public class RepositoryTxtDAO extends DAO {
             FileOutputStream newLine = new FileOutputStream(file, true);
 
             for (String line : Files.readAllLines(file.toPath(), Charset.defaultCharset())) {
-                if (Integer.toString(id) == line.split("\\|")[0]) {
+                if (Integer.toString(id).equals(line.split("\\|")[0])) {
                     return prodToProduct(line);
                 }
             }
@@ -118,8 +118,8 @@ public class RepositoryTxtDAO extends DAO {
 
     private String prodToString(Product p) {
         String prod = p.getCode() + "|" + p.getDate() + "|" + p.getLocal() + "|" + p.getType() + "|" + p.getBrand()
-                + "|" + p.getDescription() + "|" + p.getSize() + "|" + p.getColor() + "|" + p.getValueTag() + "|"
-                + p.getValuePaid() + "|" + p.getPrice();
+                + "|" + p.getDescription() + "|" + p.getSize().getSize() + "|" + p.getColor().getColor() + "|" +
+                p.getValueTag() + "|" + p.getValuePaid() + "|" + p.getPrice();
         return prod;
     }
 

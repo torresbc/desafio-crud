@@ -18,10 +18,10 @@ public class Validation {
         DAO dao = CreateRepository.Create();
 
         if(dao.read(id) == null){
-            return false;
-        }
-        else{
             return true;
+        }
+        else {
+            return false;
         }
     }
 

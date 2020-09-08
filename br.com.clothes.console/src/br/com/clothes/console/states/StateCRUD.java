@@ -34,6 +34,7 @@ public class StateCRUD extends StateConsole{
                     Create();
                 }
                 catch (Exception erro){
+                    System.out.println("Create() inválido");
                 }
                 break;
             case "R":
@@ -44,6 +45,7 @@ public class StateCRUD extends StateConsole{
                     Update();
                 }
                 catch (Exception erro){
+                    System.out.println("Update() inválido");
                 }
             case "D":
                 Delete();
@@ -99,7 +101,6 @@ public class StateCRUD extends StateConsole{
     private void Update() throws Exception{
         String opcao = "";
         Scanner input = new Scanner(System.in);
-        opcao = input.next().toUpperCase();
         int code;
 
         System.out.println("Digite o código do produto a ser atualizado:");
@@ -122,7 +123,6 @@ public class StateCRUD extends StateConsole{
 
         String opcao = "";
         Scanner input = new Scanner(System.in);
-        opcao = input.next().toUpperCase();
         int code;
 
         System.out.println("Digite o código do novo produto:");
@@ -144,7 +144,6 @@ public class StateCRUD extends StateConsole{
     private Product CRmethod(int id) throws Exception{
         String opcao = "";
         Scanner input = new Scanner(System.in);
-        opcao = input.next().toUpperCase();
 
         Date date;
         String local;
@@ -267,7 +266,6 @@ public class StateCRUD extends StateConsole{
 
         String opcao;
         Scanner input = new Scanner(System.in);
-        opcao = input.next().toUpperCase();
         int code;
 
         System.out.println("Digite o código do produto a ser visualizado:");
