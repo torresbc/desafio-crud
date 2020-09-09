@@ -1,0 +1,2 @@
+123|Tue Sep 08 00:00:00 BRT 2020|SBC|Vestido|Gucci|Bonito|1|6|500.5|1500.0|2000.79
+123|Tue Sep 08 00:00:00 BRT 2020|SBC|Vestido|Gucci|Bonito|1|6|500.5|1500.0|2000.79

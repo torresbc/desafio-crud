@@ -259,6 +259,8 @@ public class StateCRUD extends StateConsole{
 
         return new Product(id, date, local, type, brand, description,
                 size, color, valueTag, valuePaid, price);
+
+        return
     }
 
     private void Read(){
