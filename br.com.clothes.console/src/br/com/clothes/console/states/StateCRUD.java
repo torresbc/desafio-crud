@@ -22,7 +22,7 @@ public class StateCRUD extends StateConsole{
 
         System.out.println("Selecione uma das opções abaixo:");
         System.out.println("C - Cadastrar novo produto\nR - Localizar produto\n"
-                + "U - Atualizar produto\nD - Deletar produto");
+                + "U - Atualizar produto\nD - Deletar produto\n0 - Para voltar");
 
         String opcao = "";
         Scanner input = new Scanner(System.in);
@@ -47,8 +47,13 @@ public class StateCRUD extends StateConsole{
                 catch (Exception erro){
                     System.out.println("Update() inválido");
                 }
+                break;
             case "D":
                 Delete();
+                break;
+            case "0":
+                Main.state = States.Menu.getState();
+                break;
             default:
                 System.out.println("Selecione uma opção válida");
         }
@@ -59,8 +64,13 @@ public class StateCRUD extends StateConsole{
     private void Delete(){
         DAO dao = CreateRepository.Create();
 
+        if(DAO.products.size()==0){
+            System.out.println("Nenhum produto cadastrado para deletar");
+            return;
+        }
+
         for (Product p:
-             dao.products) {
+             DAO.products) {
             System.out.println("Código: " + p.getCode() + ", Descrição: " + p.getDescription());
         }
         boolean valido = false;
@@ -78,13 +88,12 @@ public class StateCRUD extends StateConsole{
 
                 while (!valido){
                     System.out.println("Confirmar deleção? S/N");
-                    opcao = input.next().toUpperCase();
-                    if (opcao.toUpperCase() == "S"){
+                    if (input.next().toUpperCase().toUpperCase().equals("S")){
                         dao.delete(Integer.parseInt(opcao));
                         System.out.println("Deletado com sucesso");
                         valido = true;
                     }
-                    else if(opcao.toUpperCase() == "N"){
+                    else if(opcao.toUpperCase().equals("N")){
                         valido = true;
                     }
                 }
@@ -103,6 +112,13 @@ public class StateCRUD extends StateConsole{
         Scanner input = new Scanner(System.in);
         int code;
 
+        DAO dao = CreateRepository.Create();
+
+        if(DAO.products.size()==0){
+            System.out.println("Nenhum produto cadastrado para atualizar");
+            return;
+        }
+
         System.out.println("Digite o código do produto a ser atualizado:");
         opcao = input.next();
         while (!(Validation.ValidInt(opcao)&&
@@ -112,11 +128,23 @@ public class StateCRUD extends StateConsole{
         }
         code = Integer.parseInt(opcao);
 
-        Product p = CRmethod(code);
+        Product prodUpdated = CRmethod(code);
 
-        DAO dao = CreateRepository.Create();
 
-        dao.update(p);
+
+        Product oldProd = dao.read(code);
+        oldProd.setDate(prodUpdated.getDate());
+        oldProd.setLocal(prodUpdated.getLocal());
+        oldProd.setType(prodUpdated.getType());
+        oldProd.setBrand(prodUpdated.getBrand());
+        oldProd.setDescription(prodUpdated.getDescription());
+        oldProd.setSize(prodUpdated.getSize());
+        oldProd.setColor(prodUpdated.getColor());
+        oldProd.setValueTag(prodUpdated.getValueTag());
+        oldProd.setValuePaid(prodUpdated.getValuePaid());
+        oldProd.setPrice(prodUpdated.getPrice());
+
+        dao.update(oldProd);
     }
 
     private void Create() throws Exception{
@@ -135,6 +163,7 @@ public class StateCRUD extends StateConsole{
         code = Integer.parseInt(opcao);
 
         Product p = CRmethod(code);
+        p.setCode(code);
 
         DAO dao = CreateRepository.Create();
 
@@ -163,7 +192,7 @@ public class StateCRUD extends StateConsole{
             System.out.println("Digite uma data válida");
             opcao = input.next();
         }
-        date = new SimpleDateFormat("dd/MM/yyyy").parse(opcao);
+        date = Validation.dtFormat.parse(opcao);
 
 
         System.out.println("Digite o local da compra:");
@@ -257,14 +286,22 @@ public class StateCRUD extends StateConsole{
         }
         price = Float.parseFloat(opcao);
 
-        return new Product(id, date, local, type, brand, description,
-                size, color, valueTag, valuePaid, price);
+        //String prod = id + "|" + date + "|" + local + "|" + type + "|" + brand
+         //       + "|" + description + "|" + size.getSize() + "|" + color.getColor() + "|" +
+         //       valueTag + "|" + valuePaid + "|" + price;
 
-        return
+        return new Product(-1, date, local, type, brand, description,
+                size, color, valueTag, valuePaid, price);
     }
 
     private void Read(){
-        System.out.println();
+
+        DAO dao = CreateRepository.Create();
+
+        if(DAO.products.size()==0){
+            System.out.println("Nenhum produto cadastrado para ser visualizado");
+            return;
+        }
 
         String opcao;
         Scanner input = new Scanner(System.in);
@@ -279,13 +316,10 @@ public class StateCRUD extends StateConsole{
         }
         code = Integer.parseInt(opcao);
 
-
-        DAO dao = CreateRepository.Create();
-
         Product p = dao.read(code);
 
         System.out.println("Código: " + p.getCode());
-        System.out.println("Data de Entrada: " + p.getDate());
+        System.out.println("Data de Entrada: " + Validation.dtFormat.format(p.getDate()));
         System.out.println("Local da Compra: " + p.getLocal());
         System.out.println("Tipo: " + p.getType());
         System.out.println("Marca: " + p.getBrand());

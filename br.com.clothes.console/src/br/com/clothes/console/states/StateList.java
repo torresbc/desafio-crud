@@ -1,6 +1,7 @@
 package br.com.clothes.console.states;
 
 import br.com.clothes.DAO.RepositoryTxtDAO;
+import br.com.clothes.business.Validation;
 import br.com.clothes.comum.Product;
 import br.com.clothes.console.Main;
 
@@ -20,7 +21,7 @@ public class StateList extends StateConsole {
         RepositoryTxtDAO.products) {
 
             System.out.println("Código: " + p.getCode());
-            System.out.println("Data de Entrada: " + p.getDate());
+            System.out.println("Data de Entrada: " + Validation.dtFormat.format(p.getDate()));
             System.out.println("Local da Compra: " + p.getLocal());
             System.out.println("Tipo: " + p.getType());
             System.out.println("Marca: " + p.getBrand());
@@ -35,13 +36,16 @@ public class StateList extends StateConsole {
             System.out.println("\n\n");
         }
 
-        System.out.println("Aperte qualquer tecla para voltar ao menu");
+        System.out.println("Digite:\n1 - Retornar ao menu\n2 - Retornar ao estoque");
 
         String opcao = "";
         Scanner input = new Scanner(System.in);
         opcao = input.next();
 
-        Main.state = States.Menu.getState();
+        if(opcao.equals("2"))
+            Main.state = States.CRUD.getState();
+        else
+            Main.state = States.Menu.getState();
 
         return false;
     }

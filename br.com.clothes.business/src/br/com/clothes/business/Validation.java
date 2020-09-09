@@ -14,9 +14,17 @@ import java.util.concurrent.ExecutionException;
 
 public class Validation {
 
+    public static final SimpleDateFormat dtFormat = inicializeDtFormat();
+
+    private static SimpleDateFormat inicializeDtFormat() {
+        SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+        dt.setLenient(false);
+        return dt;
+    }
+
+
     public static boolean ProductIDExists(int id){
         DAO dao = CreateRepository.Create();
-
         if(dao.read(id) == null){
             return true;
         }
@@ -27,8 +35,7 @@ public class Validation {
 
     public static boolean ValidInt(String value){
         try {
-            Integer.parseInt(value);
-            return true;
+            return Integer.parseInt(value)>-1;
         }
         catch (Exception erro){
             return false;
@@ -36,7 +43,7 @@ public class Validation {
     }
 
     public static boolean ValidString(String value){
-        return !value.isEmpty();
+        return !value.trim().isEmpty()&&!value.contains("|");
     }
 
     public static boolean ValidFloat(String value){
@@ -52,26 +59,20 @@ public class Validation {
     public static boolean ValidColor(String id){
         if(!ValidInt(id))
             return false;
-        if(Color.CaseColor(Integer.parseInt(id))==null){
-            return false;
-        }
-        return true;
+        return Color.CaseColor(Integer.parseInt(id)) != null;
     }
 
     public static boolean ValidSize(String id){
         if(!ValidInt(id))
             return false;
-        if(Size.CaseSize(Integer.parseInt(id))==null){
-            return false;
-        }
-        return true;
+        return Size.CaseSize(Integer.parseInt(id)) != null;
     }
 
     public static boolean ValidDate(String date){
         Date date2 = null;
         try{
-            date2 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-            return true;
+            date2 = dtFormat.parse(date);
+            return date.trim().length()==10;
         }
         catch (Exception erro){
             return false;

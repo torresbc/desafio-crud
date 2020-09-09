@@ -1,2 +1,4 @@
-123|Tue Sep 08 00:00:00 BRT 2020|SBC|Vestido|Gucci|Bonito|1|6|500.5|1500.0|2000.79
-123|Tue Sep 08 00:00:00 BRT 2020|SBC|Vestido|Gucci|Bonito|1|6|500.5|1500.0|2000.79
+3305|12/12/1212|aqui|prodddd|mtooo|top|2|1|1000.0|2000.0|3400.0
+4566|15/10/2018|Diadema|Ved|Cci|Boto|5|8|5660.5|1500.0|2800.79
+34104|15/10/2018|Diadema|Ved|Cci|Boto|5|8|5660.5|1500.0|2800.79
+123|20/12/2020|diadema|blusa|gucci|mto|0|0|2000.0|3440.0|1110.0
