@@ -1,12 +1,10 @@
 package br.com.clothes.console.states;
 
 import br.com.clothes.DAO.DAO;
-import br.com.clothes.DAO.RepositoryTxtDAO;
 import br.com.clothes.business.CreateRepository;
 import br.com.clothes.console.Main;
 import br.com.clothes.comum.Product;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import br.com.clothes.comum.Size;
 import br.com.clothes.comum.Color;
@@ -122,7 +120,7 @@ public class StateCRUD extends StateConsole{
         System.out.println("Digite o código do produto a ser atualizado:");
         opcao = input.next();
         while (!(Validation.ValidInt(opcao)&&
-                !Validation.ProductIDExists(Integer.parseInt(opcao)))){
+                !Validation.ProductIDValid(Integer.parseInt(opcao)))){
             System.out.println("Digite um código válido");
             opcao = input.next();
         }
@@ -156,7 +154,7 @@ public class StateCRUD extends StateConsole{
         System.out.println("Digite o código do novo produto:");
         opcao = input.next();
         while (!(Validation.ValidInt(opcao)&&
-                Validation.ProductIDExists(Integer.parseInt(opcao)))){
+                Validation.ProductIDValid(Integer.parseInt(opcao)))){
             System.out.println("Digite um código válido");
             opcao = input.next();
         }
@@ -310,7 +308,7 @@ public class StateCRUD extends StateConsole{
         System.out.println("Digite o código do produto a ser visualizado:");
         opcao = input.next();
         while (!(Validation.ValidInt(opcao)&&
-                !Validation.ProductIDExists(Integer.parseInt(opcao)))){
+                !Validation.ProductIDValid(Integer.parseInt(opcao)))){
             System.out.println("Digite um código válido");
             opcao = input.next();
         }
