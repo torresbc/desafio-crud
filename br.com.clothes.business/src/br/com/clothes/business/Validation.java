@@ -11,19 +11,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
-
-
 public class Validation {
 
     public static final SimpleDateFormat dtFormat = inicializeDtFormat();
-
 
     private static SimpleDateFormat inicializeDtFormat() {
         SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
         dt.setLenient(false);
         return dt;
     }
-
 
     /**
      *
@@ -34,7 +30,6 @@ public class Validation {
         DAO dao = CreateRepository.Create();
         return dao.read(id) == null;
     }
-
 
     /**
      *
@@ -50,7 +45,6 @@ public class Validation {
         }
     }
 
-
     /**
      *
      * @param value the string to be validated
@@ -59,7 +53,6 @@ public class Validation {
     public static boolean ValidString(String value){
         return !value.trim().isEmpty()&&!value.contains("|");
     }
-
 
     /**
      *
@@ -113,5 +106,4 @@ public class Validation {
             return false;
         }
     }
-
 }

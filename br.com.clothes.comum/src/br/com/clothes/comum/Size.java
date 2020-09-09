@@ -9,6 +9,11 @@ public enum Size {
         this.idSize = idSize;
     }
 
+    /**
+     *
+     * @param id of the product Size, recorded in the repository
+     * @return the size referring to the id
+     */
     public static Size CaseSize(int id){
         Size size;
         switch (id) {

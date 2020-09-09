@@ -2,6 +2,10 @@ package br.com.clothes.business;
 
 import br.com.clothes.comum.Repository;
 
+/**
+ *
+ * Set the repository that will be used
+ */
 public class Config {
 
     private static Config uniqueInstance;

@@ -17,7 +17,6 @@ import java.util.GregorianCalendar;
 public class Main {
     public static StateConsole state;
 
-
     public static void main(String[] args) {
         Config.getInstance().setRepositoryType(Repository.FileTXT);
         CreateRepository.Create();

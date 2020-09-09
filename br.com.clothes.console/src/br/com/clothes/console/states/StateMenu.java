@@ -3,6 +3,11 @@ package br.com.clothes.console.states;
 import java.util.*;
 import br.com.clothes.console.Main;
 
+/**
+ *
+ *
+ * Initializes the Start Menu
+ */
 public class StateMenu extends StateConsole {
 
     @Override

@@ -7,6 +7,11 @@ import br.com.clothes.console.Main;
 
 import java.util.Scanner;
 
+/**
+ *
+ *
+ * lists all products already instanced
+ */
 public class StateList extends StateConsole {
 
     @Override
@@ -49,5 +54,4 @@ public class StateList extends StateConsole {
 
         return false;
     }
-
 }

@@ -15,6 +15,10 @@ import java.util.Scanner;
 
 public class StateCRUD extends StateConsole{
 
+    /**
+     *
+     * Initialize CRUD menu
+     */
     @Override
     public boolean execute(){
 
@@ -58,6 +62,7 @@ public class StateCRUD extends StateConsole{
 
         return false;
     }
+
 
     private void Delete(){
         DAO dao = CreateRepository.Create();
@@ -168,6 +173,11 @@ public class StateCRUD extends StateConsole{
         dao.create(p);
     }
 
+    /**
+     *
+     * @param id inserted by user
+     * @return a new product with user-entered assignments
+     */
     private Product CRmethod(int id) throws Exception{
         String opcao = "";
         Scanner input = new Scanner(System.in);
@@ -242,7 +252,6 @@ public class StateCRUD extends StateConsole{
         size = Size.CaseSize(Integer.parseInt(opcao));
 
 
-
         System.out.println("Selecione a cor do produto:");
         System.out.println("0 - Azul\n1 - Verde\n2 - Amarelo\n3 - Vermelho\n4 - Rosa\n5 - Roxo\n" +
                 "6 - Preto\n7 - Branco\n8 - Cinza\n9 - Laranja\n10 - Marrom");
@@ -283,10 +292,6 @@ public class StateCRUD extends StateConsole{
             opcao = input.next();
         }
         price = Float.parseFloat(opcao);
-
-        //String prod = id + "|" + date + "|" + local + "|" + type + "|" + brand
-         //       + "|" + description + "|" + size.getSize() + "|" + color.getColor() + "|" +
-         //       valueTag + "|" + valuePaid + "|" + price;
 
         return new Product(-1, date, local, type, brand, description,
                 size, color, valueTag, valuePaid, price);

@@ -10,6 +10,11 @@ public enum Color {
         this.idColor = idColor;
     }
 
+    /**
+     *
+     * @param id of the product Color, recorded in the repository
+     * @return the color name referring to the id
+     */
     public static Color CaseColor(int id){
         Color color;
         switch (id) {
