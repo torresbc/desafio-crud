@@ -91,12 +91,13 @@ public class StateCRUD extends StateConsole{
 
                 while (!valido){
                     System.out.println("Confirmar deleção? S/N");
-                    if (input.next().toUpperCase().toUpperCase().equals("S")){
+                    String confirm = input.next().toUpperCase();
+                    if (confirm.equals("S")){
                         dao.delete(Integer.parseInt(opcao));
                         System.out.println("Deletado com sucesso");
                         valido = true;
                     }
-                    else if(opcao.toUpperCase().equals("N")){
+                    else if(confirm.equals("N")){
                         valido = true;
                     }
                 }
